@@ -1,0 +1,88 @@
+= Translation
+
+Translate provides an easy to translate word or expression into another, 
+using wordreference. This website does'nt provide API yet so I decided 
+to create this script which make GET requests and parse results using Hpricot.
+
+Default translation is english to french but it can be overriden by 
+providing command line options or config file.
+Translate can be used directly in command line or inside an other program.
+
+== Installation
+
+=== Gem installation
+
+Download and install translate with the following:
+
+	gem install translate
+
+=== Common installation
+
+Checkout the source code on github: git clone http://github.com/fuse/translate
+
+# ruby install.rb
+
+It will ask you where you want to install the translate library and binary in 
+your path.
+
+Warning: 
+Be aware that library is prior to gem. If you have an old version of the library 
+and install recent gem it might not work as expected.
+
+== Usage
+
+=== From command line
+	
+$ translate world
+Will translate world from english to french.
+
+$ translate casa -f it -t en
+Will translate casa from italian to english.
+
+If you want to know which language can be used :
+$ translate -l
+ 
+If you want to know all options of translate :
+$ translate -h
+
+=== From another program
+	
+You only have to create a new instance or the translation class by giving 
+the expression to translate and your options and explicitly call translate.
+
+translation = Translation.new("maison", { :from => :fr, :to => :en, :more => true })
+translation.translate
+ 
+Results are directly available through translation.items
+
+=== Setup default options
+
+If you don't want to retype options each time you're using translate, just 
+create a yaml config file into your home named translate.yml using this syntax :
+	translate:
+		from: fr
+		to: en
+		width: 100	
+		more: true
+
+Priority is given to command line options, config file options and finally 
+default options.
+
+== Licence
+
+Translate is available under MIT-LICENSE. 
+
+= Other
+ 
+Author: 	Martin Catty <martin@noremember.org>
+License:	Copyright 2008 by Martin Catty.
+					Released under an MIT-style licence. See the LICENCE file
+					included in the distribution.
+ 
+== Warranty
+ 
+This software is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+purpose.
+
