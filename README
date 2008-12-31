@@ -1,4 +1,4 @@
-= Translation
+= Translate
 
 Translate provides an easy to translate word or expression into another, 
 using wordreference. This website does'nt provide API yet so I decided 
@@ -20,38 +20,37 @@ Download and install translate with the following:
 
 Checkout the source code on github: git clone git://github.com/fuse/translate.git
 
-# ruby install.rb
+	ruby install.rb
 
 It will ask you where you want to install the translate library and binary in 
 your path.
 
-Warning: 
-Be aware that library is prior to gem. If you have an old version of the library 
-and install recent gem it might not work as expected.
+_Warning_: 
+Be carefull to *NOT* install translate with the both way.
 
 == Usage
 
 === From command line
 	
-$ translate world
+	translate world
 Will translate world from english to french.
 
-$ translate casa -f it -t en
+	translate casa -f it -t en
 Will translate casa from italian to english.
 
 If you want to know which language can be used :
-$ translate -l
+	translate -l
  
 If you want to know all options of translate :
-$ translate -h
+	translate -h
 
 === From another program
 	
 You only have to create a new instance or the translation class by giving 
 the expression to translate and your options and explicitly call translate.
 
-translation = Translation.new("maison", { :from => :fr, :to => :en, :more => true })
-translation.translate
+	translation = Translation.new("maison", { :from => :fr, :to => :en, :more => true })
+	translation.translate
  
 Results are directly available through translation.items
 

@@ -1,5 +1,7 @@
 module Translate
   module Language
+    # Language module contains the different languages available and defined
+    # the directions which can be used.
     EN = "English"
     FR = "French"
     IT = "Italian"
@@ -18,6 +20,10 @@ module Translate
       IT => [ "EN" ]
     }
 
+    # Show the available translations on the command line. You can invoke 
+    # this method by using : 
+    #   $ translate -l
+    # It will print the language's abbreviation and real name (in english).
     def self.available_translations
       puts "Available translations :\n"
       (Language.constants - [DIRECTIONS]).sort.each do |l|
@@ -28,6 +34,7 @@ module Translate
       end
     end # available_translations
   
+    # Check if the original and final languages are available.
     def self.available_translation?(*args)
       from, to = args.map { |a| a.to_s.strip.upcase }
       return false if from.blank? or to.blank?

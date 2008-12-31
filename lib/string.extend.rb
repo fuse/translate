@@ -1,12 +1,12 @@
 class String
-  def blank?
-    nil? or strip.empty?
-  end # blank
+	def blank?
+		self !~ /\S/
+	end # blank
   
 	def truncate(length = 30, truncate_string = "...")
-    return if blank?
-    (self.length > length ? self[0...(length - truncate_string.length)] + truncate_string : self).to_s
-  end # truncate  
+		return if blank?
+    		(self.length > length ? self[0...(length - truncate_string.length)] + truncate_string : self).to_s
+	end # truncate  
 
 	def sanitize
 		# strip html tags and html code of the arrow (=>)

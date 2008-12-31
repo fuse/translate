@@ -66,15 +66,15 @@ module Translate
     
 	 	# Initialize translation with expression and options.	
 		# Ensure width will be an integer, and provides an empty array of items.
-    def initialize(expression, options = {})
-      self.expression = expression
-      options = OPTIONS.merge(options)
-      for k in options.keys
-        self.send("#{k}=", options[k]) if self.respond_to?(k)
-      end
+		def initialize(expression, options = {})
+			self.expression = expression
+			options = OPTIONS.merge(options)
+			for k in options.keys
+				self.send("#{k}=", options[k]) if self.respond_to?(k)
+			end
 			@items = []
 			@width = @width.to_i
-    end # initialize
+		end # initialize
 
 		# Provide the from, to combination. Example: from en to fr will give enfr.
 		# Usefull to build the final url.
@@ -91,29 +91,29 @@ module Translate
 	 	# Parse the document retrieved from tree and add items into 
 		# the final results array.	
 		def translate
-		  return nil unless valid?
+			return nil unless valid?
 			continue = false
 			@items.clear
 			klass = Language.respond_to?("klass_#{combination}") ? Language.send("klass_#{combination}") : "2"
-      tree.search("table.Rtbl#{klass}/tr").each do |child|
-       	head = child.search("td.Head:first").first
+			tree.search("table.Rtbl#{klass}/tr").each do |child|
+				head = child.search("td.Head:first").first
 				continue = !! (
 					head.html =~ /Principal/ || 
 					head.attributes['title'] =~ /Principal/ ||
 					(head.html =~ /Additional/ and more) ||
 					(head.attributes['title'] =~ /Additional/)) if head.respond_to?(:html)
-        unless ! continue or child.classes =~ /(evenEx|oddEx)/
- 	        # strip html tags
-          description = child.search("td.FrCN#{klass}/*").to_s.sanitize
- 	        translation = child.search("td.ToW#{klass}/*").to_s.sanitize
+				unless ! continue or child.classes =~ /(evenEx|oddEx)/
+					# strip html tags
+					description = child.search("td.FrCN#{klass}/*").to_s.sanitize
+					translation = child.search("td.ToW#{klass}/*").to_s.sanitize
 					@items << Item.new({ 
 						:description 	=> description, 
 						:translation 	=> translation,
 						:new_line			=> ! child.search("td.FrW#{klass}").empty?
 					}) unless description.empty? and translation.empty?
- 	      end
+				end
 			end
-    end # translate
+		end # translate
 
 		# Only used when translate is called from command line.
 		# Print results in the shell.
@@ -161,21 +161,21 @@ module Translate
     
 		# Call a wordreference url, dynamiquely builded with from expression and combination.
   	# We need to provide an User-Agent otherwise we're redirected to yahoo.
-  	def retrieve
-    	request = Net::HTTP::Get.new(url.path)
-    	request.add_field('User-Agent', 'translate')
-    	Net::HTTP.new(url.host, url.port).request(request).body
-  	end # retrieve  
+		def retrieve
+			request = Net::HTTP::Get.new(url.path)
+			request.add_field('User-Agent', 'translate')
+			Net::HTTP.new(url.host, url.port).request(request).body
+		end # retrieve  
   end
   
   class Item
 		attr_accessor :description, :translation, :new_line
     
 		def initialize(attributes = {})
-      for k in attributes.keys
-        self.send("#{k}=", attributes[k]) if self.respond_to?(k)
-      end
-    end # initialize
+			for k in attributes.keys
+				self.send("#{k}=", attributes[k]) if self.respond_to?(k)
+			end
+		end # initialize
   end
 
 	# Load options from config file if exists.
@@ -265,10 +265,10 @@ module Translate
   
 	# Only used when translate is called from command line.
   # Call the above methods to show results.
-  def translate
+	def translate
 		trap(:INT) { puts "Bye." ; exit }
-    translation = parse_command_line
+		translation = parse_command_line
 		translation.translate
 		translation.errors.empty? ? translation.print : translation.print_errors
-  end # translate
+	end # translate
 end
