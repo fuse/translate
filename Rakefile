@@ -6,21 +6,21 @@ require 'rake/contrib/rubyforgepublisher'
 require 'rubyforge'
 
 SPEC = Gem::Specification.new do |s| 
-  s.name 							= "translate"
-  s.version 					= "0.2"
-  s.author 						= "Martin Catty"
-  s.email 						= "martin@noremember.org"
-  s.homepage 					= "http://github.com/fuse/translate"
+  s.name							= "translate"
+  s.version						= "0.2"
+  s.author						= "Martin Catty"
+  s.email							= "martin@noremember.org"
+  s.homepage					= "http://github.com/fuse/translate"
 	s.rubyforge_project	= "translate"
-  s.summary 					= "translate provide an easy way to translate word or expression using wordreference.com"
-  s.description 			= "translate make get requests and parse the result using hpricot. You can use it inside an other program or directly via command line."
-  s.files 						= [ "Rakefile", "install.rb", "uninstall.rb", "README", "LICENCE" ] +
+  s.summary						= "translate provide an easy way to translate word or expression using wordreference.com"
+  s.description				= "translate make get requests and parse the result using hpricot. You can use it inside an other program or directly via command line."
+  s.files							= [ "Rakefile", "install.rb", "uninstall.rb", "README", "LICENCE" ] +
                           Dir.glob("{bin,doc,lib,test}/**/*")
   s.bindir						= "bin"
-	s.require_path 			= "lib"
-  s.test_files 				= "test/translate_test.rb"
-  s.has_rdoc 					= true
-  s.extra_rdoc_files 	= ["README"]
+	s.require_path			= "lib"
+  s.test_files				= "test/translate_test.rb"
+  s.has_rdoc					= true
+  s.extra_rdoc_files	= ["README"]
 	s.executables				=	"translate"
   s.add_dependency("hpricot")
 end
