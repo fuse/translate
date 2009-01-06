@@ -14,13 +14,13 @@ Translate can be used directly in command line or inside an other program.
 
 Download and install translate with the following:
 
-	gem install translate
+	gem install wrtranslate
 
 === Common installation
 
 Checkout the source code on github: git clone git://github.com/fuse/translate.git
 
-	ruby install.rb
+	# ruby install.rb
 
 It will ask you where you want to install the translate library and binary in 
 your path.
@@ -84,4 +84,3 @@ This software is provided "as is" and without any express or
 implied warranties, including, without limitation, the implied
 warranties of merchantibility and fitness for a particular
 purpose.
-

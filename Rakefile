@@ -6,12 +6,12 @@ require 'rake/contrib/rubyforgepublisher'
 require 'rubyforge'
 
 SPEC = Gem::Specification.new do |s| 
-  s.name							= "translate"
+  s.name							= "wrtranslate"
   s.version						= "0.2"
   s.author						= "Martin Catty"
   s.email							= "martin@noremember.org"
   s.homepage					= "http://github.com/fuse/translate"
-	s.rubyforge_project	= "translate"
+	s.rubyforge_project	= "wrtranslate"
   s.summary						= "translate provide an easy way to translate word or expression using wordreference.com"
   s.description				= "translate make get requests and parse the result using hpricot. You can use it inside an other program or directly via command line."
   s.files							= [ "Rakefile", "install.rb", "uninstall.rb", "README", "LICENCE" ] +
