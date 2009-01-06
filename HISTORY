@@ -1,0 +1,15 @@
+== 0.2.0 / 2009-01-06
+
+Enhancements: 
+	* More modular
+	* More languages supported
+	* Can be installed directly via gem
+	* Support config file
+	* Width can be specified
+	* Space is better used
+	* Can be used inside an other program
+	* Add tests
+
+Fixes:
+	* Die correctly when hit ^C
+	* Add separator at the good point
