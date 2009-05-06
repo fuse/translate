@@ -5,8 +5,7 @@ LIBRARY_PATH    = File.join("lib", "translate.rb")
 EXECUTABLE_PATH = "translate"
 
 def check_privileges
-  userid = `id -u`.chomp.to_i
-  unless userid.zero?
+  unless Process.uid.zero?
     puts "You must have root's privileges to install translate."
     interrupt
   end
